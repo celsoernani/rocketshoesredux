@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import background from './../../assets/images/background.png';
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');

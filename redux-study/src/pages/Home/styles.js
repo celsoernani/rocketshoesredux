@@ -12,51 +12,51 @@ export const ProductList = styled.ul`
     background: #fff;
     border-radius: 4px;
     padding: 15px;
-  }
 
-  img {
-    align-self: center;
-    max-width: 250px;
-  }
-
-  > strong {
-    font-size: 16px;
-    line-height: 20px;
-    color: #333;
-    margin-top: 20px;
-  }
-
-  > span {
-    font-size: 21px;
-    font-weight: bold;
-    margin: 5px 0 20px;
-  }
-
-  button {
-    background: #9e9e;
-    color: #fff;
-    border: 0;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-top: auto;
-    transition: 0.2s;
-
-    display: flex;
-    align-items: center;
-
-    &:hover {
-      background: ${darken(0.1, '#9e9e')};
+    img {
+      align-self: center;
+      max-width: 150px;
     }
 
-    div {
+    > strong {
+      font-size: 16px;
+      line-height: 20px;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    > span {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    button {
+      background: #9e9e;
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: auto;
+      transition: 0.2s;
+
       display: flex;
-      padding: 12px;
-      background: rgba(0, 0, 0, 0.1);
-    }
-  }
+      align-items: center;
 
-  span {
-    flex: 1;
-    font-weight: bold;
+      &:hover {
+        background: ${darken(0.1, '#9e9e')};
+      }
+
+      div {
+        display: flex;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    span {
+      flex: 1;
+      font-weight: bold;
+    }
   }
 `;
