@@ -10,12 +10,12 @@ import {
 } from 'react-icons/md';
 import * as CartActions from './../../store/modules/cart/actions';
 import { bindActionCreators } from 'redux';
-function Cart({ cart, removeFromCart, updateAmount, total }) {
+function Cart({ cart, removeFromCart, updateAmountRequest, total }) {
   function increment(product) {
-    updateAmount(product.id, product.amount + 1);
+    updateAmountRequest(product.id, product.amount + 1);
   }
   function decrement(product) {
-    updateAmount(product.id, product.amount - 1);
+    updateAmountRequest(product.id, product.amount - 1);
   }
   return (
     <Container>
@@ -23,7 +23,7 @@ function Cart({ cart, removeFromCart, updateAmount, total }) {
         <thead>
           <tr>
             <th />
-            <th> PRODUTOR</th>
+            <th> PRODUTO</th>
 
             <th> QTD</th>
             <th> SUBTOTAL</th>
@@ -34,10 +34,10 @@ function Cart({ cart, removeFromCart, updateAmount, total }) {
           {cart.map(product => (
             <tr>
               <td>
-                <img src={product.image} alt={product.name} />
+                <img src={product.image} alt={product.title} />
               </td>
               <td>
-                <strong> {product.name}</strong>
+                <strong> {product.title}</strong>
                 <span>{product.priceFormatted}</span>
               </td>
 
