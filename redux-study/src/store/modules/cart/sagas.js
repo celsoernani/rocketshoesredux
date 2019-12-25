@@ -1,8 +1,11 @@
 import api from './../../../services/api';
+import history from './../../../services/history';
+
 import { call, select, put, all, takeLatest } from 'redux-saga/effects';
 import { addToCartSuccess, updateAmountSuccess } from './actions';
 import { formatPrice } from '../../../util/format';
 import { toast } from 'react-toastify';
+
 //genrate async await
 function* addToCart({ id }) {
   const productExists = yield select(state =>
@@ -29,6 +32,7 @@ function* addToCart({ id }) {
     };
 
     yield put(addToCartSuccess(data));
+    history.push('/cart');
   }
 }
 
