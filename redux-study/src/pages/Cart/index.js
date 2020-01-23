@@ -24,7 +24,6 @@ function Cart({ cart, removeFromCart, updateAmountRequest, total }) {
           <tr>
             <th />
             <th> PRODUTO</th>
-
             <th> QTD</th>
             <th> SUBTOTAL</th>
             <th />
@@ -93,4 +92,5 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch =>
   bindActionCreators(CartActions, dispatch);
+
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

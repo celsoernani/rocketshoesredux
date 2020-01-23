@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { MdShoppingCart } from 'react-icons/md';
 import api from './../../services/api';
@@ -6,29 +6,26 @@ import { ProductList } from './styles';
 import { formatPrice } from './../../util/format';
 import { bindActionCreators } from 'redux';
 import * as CartActions from './../../store/modules/cart/actions';
-class Home extends Component {
-  state = {
-    products: [],
-  };
+function Home ({amount, addToCartRequest}) {
+    const [products, setProducts ] = useState([])
 
-  handleAddProduct = id => {
-    const { addToCartRequest } = this.props;
-
+  function handleAddProduct (id) {
     addToCartRequest(id);
   };
 
-  async componentDidMount() {
-    const response = await api.get('products');
-    const data = response.data.map(product => ({
-      ...product,
-      priceFormatted: formatPrice(product.price),
-    }));
-    this.setState({ products: data });
-  }
-  render() {
-    const { products } = this.state;
-    const { amount } = this.props;
-    return (
+  useEffect(()=> {
+      async function loadProducts(){
+        const response = await api.get('products');
+        const data = response.data.map(product => ({
+          ...product,
+          priceFormatted: formatPrice(product.price),
+        }));
+        setProducts(data)
+      }
+      loadProducts();
+  }, [])
+
+  return (
       <ProductList>
         {products.map(product => (
           <li key={product.id}>
@@ -38,7 +35,7 @@ class Home extends Component {
 
             <button
               type="button"
-              onClick={() => this.handleAddProduct(product.id)}
+              onClick={() => handleAddProduct(product.id)}
             >
               <div>
                 <MdShoppingCart size={16} color="#fff" />
@@ -50,9 +47,7 @@ class Home extends Component {
         ))}
       </ProductList>
     );
-  }
 }
-
 const mapStateToProps = state => ({
   amount: state.cart.reduce((amount, product) => {
     amount[product.id] = product.amount;
